@@ -229,7 +229,6 @@
 </template>
 
 <script setup lang="ts">
-import swal from 'sweetalert'
 import { portfolios } from '~~/shared/data/portfolios'
 import { skills } from '~~/shared/data/skills'
 import { socials } from '~~/shared/data/socials'
@@ -240,6 +239,10 @@ const sendMail = async (value: {
   email: string
   message: string
 }) => {
+  // sweetalert はインポート時にブラウザのグローバルを触るため、
+  // SSR(Workers)で評価されないよう送信時に動的インポートする
+  const { default: swal } = await import('sweetalert')
+
   try {
     await $fetch('/api/contact', { method: 'POST', body: value })
     swal(
