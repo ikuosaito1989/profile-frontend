@@ -25,11 +25,22 @@ npm run dev
 
 ## ビルド / デプロイ
 
+`master` への push で Cloudflare Workers Builds が自動的にデプロイします。
+
+```
+npm install → npm run build → npx wrangler deploy
+```
+
+手元から確認・デプロイする場合は以下を使います。
+
 ```bash
 npm run build      # .output/ を生成（Nitro preset: cloudflare_module）
 npm run cf:preview # Workers ランタイムでローカル確認
 npm run deploy     # Cloudflare Workers へデプロイ
 ```
+
+`wrangler.jsonc` の `vars` はビルド時に `.output/server/wrangler.json` へ書き出されます。
+値を変更したあとに `wrangler deploy` だけを実行しても反映されないため、必ず `npm run deploy` を使ってください。
 
 ## シークレット
 
