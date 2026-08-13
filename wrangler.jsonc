@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "profile-frontend",
+  "main": "./.output/server/index.mjs",
+  "compatibility_date": "2025-08-13",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./.output/public"
+  },
+  "observability": {
+    "enabled": true
+  }
+  // シークレットはここに書かない。以下で登録する:
+  //   npx wrangler secret put NUXT_RESEND_API_KEY
+  //   npx wrangler secret put NUXT_MAIL_SUPPORT
+  //   npx wrangler secret put NUXT_MAIL_SUPPORT_NAME
+  //   npx wrangler secret put NUXT_MAIL_ADMIN
+}
