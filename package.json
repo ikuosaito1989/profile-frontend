@@ -19,6 +19,7 @@
     "@vee-validate/i18n": "^4.15.1",
     "@vee-validate/rules": "^4.15.1",
     "marked": "^16.4.0",
+    "mermaid": "^11.16.1",
     "nuxt": "^4.5.2",
     "sweetalert": "^2.1.2",
     "vee-validate": "^4.15.1",

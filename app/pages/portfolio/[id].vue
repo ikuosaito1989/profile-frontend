@@ -23,7 +23,7 @@
               alt=""
             />
             <div class="text-left mb-5">
-              <div v-html="descriptionHtml" />
+              <div ref="descriptionRef" v-html="descriptionHtml" />
 
               <div class="mb-3">
                 URL :
@@ -53,10 +53,11 @@
 </template>
 
 <script setup lang="ts">
-import { marked } from 'marked'
 import { findPortfolio } from '~~/shared/data/portfolios'
+import { renderMarkdown } from '~/utils/markdown'
 
 const route = useRoute()
+const descriptionRef = useTemplateRef<HTMLElement>('descriptionRef')
 
 const selectedPortfolio = computed(() =>
   findPortfolio(Number(route.params.id))
@@ -67,12 +68,40 @@ if (!selectedPortfolio.value) {
 }
 
 const descriptionHtml = computed(() =>
-  marked.parse(selectedPortfolio.value?.description ?? '', { async: false })
+  renderMarkdown(selectedPortfolio.value?.description ?? '')
 )
+
+// mermaid はブラウザの DOM を必要とするため、クライアント側でのみ描画する。
+// import.meta.client のガードにより、サーバー(Workers)バンドルからは除外される。
+onMounted(async () => {
+  if (!import.meta.client) return
+
+  const targets = descriptionRef.value?.querySelectorAll('pre.mermaid')
+  if (!targets?.length) return
+
+  const { default: mermaid } = await import('mermaid')
+  mermaid.initialize({ startOnLoad: false, theme: 'dark' })
+  await mermaid.run({ nodes: Array.from(targets) as HTMLElement[] })
+})
 </script>
 
 <style scoped>
 .image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* v-html で描画されるため :deep() で指定する */
+:deep(pre.mermaid) {
+  text-align: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+:deep(pre.mermaid svg) {
+  width: 100%;
   max-width: 100%;
   height: auto;
 }
