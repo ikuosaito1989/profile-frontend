@@ -185,7 +185,7 @@
     <footer class="footer text-center">
       <div class="container">
         <div class="row">
-          <div class="mt-4 col-lg-6">
+          <div class="mt-4 col-lg-6 mx-auto">
             <h4 class="mb-4">
               Link
             </h4>
@@ -195,24 +195,6 @@
               <NuxtLink :to="{ name: 'portfolio-id', params: { id: 2 } }"
                 >こちら</NuxtLink
               >
-            </div>
-          </div>
-
-          <!-- Footer About Text -->
-          <div class="mt-4 col-lg-6">
-            <h4 class="mb-4">
-              Storybook
-            </h4>
-            <div class="mb-0">
-              このサイトのUIコンポーネントをStorybook上げています。
-              <div>
-                Storybookは
-                <a
-                  href="https://quirky-hoover-d5f9da.netlify.com/?path=/story/component--%E3%82%B9%E3%82%AD%E3%83%AB"
-                  target="_blank"
-                  >こちら</a
-                >
-              </div>
             </div>
           </div>
         </div>
