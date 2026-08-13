@@ -41,6 +41,8 @@ withDefaults(
   width: 100%;
   aspect-ratio: 4 / 3;
   max-height: none;
+  /* 透過PNGのサムネイルが白ページに浮かないよう下地を敷く */
+  background-color: #f8f9fa;
 }
 
 .portfolio-item.portfolio-thumb a {

@@ -1,5 +1,6 @@
 import type { Portfolio } from '../types/profile'
 
+import neglegere from '../../content/neglegere.md?raw'
 import lahyl from '../../content/lahyl.md?raw'
 import olcar from '../../content/olcar.md?raw'
 import mygkrnk from '../../content/mygkrnk.md?raw'
@@ -10,8 +11,25 @@ import notFollow from '../../content/not-follow.md?raw'
 
 export const portfolios: Portfolio[] = [
   {
+    id: 8,
+    name: 'neglegere（ネグレゲレ）',
+    thumbnailUrl: '/neglegere.png',
+    description: neglegere,
+    portfolioUrl: 'https://neglegere.com/',
+    skills: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Cloudflare Workers',
+      'Cloudflare D1',
+      'Cloudflare R2',
+      'OpenNext'
+    ]
+  },
+  {
     id: 7,
-    name: 'LAHYL（ライル）',
+    name: 'LAHYL（ライル）（サービス終了）',
     thumbnailUrl: '/lahyl.png',
     description: lahyl,
     portfolioUrl: 'https://lahyl.me/',
