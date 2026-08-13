@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "profile-frontend",
+  "main": "./.output/server/index.mjs",
+  "compatibility_date": "2025-08-13",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./.output/public"
+  },
+  "workers_dev": true,
+  "observability": {
+    "enabled": true
+  },
+  // 秘密でない値のみ。APIキーは vars に置かず、シークレットとして登録する:
+  //   npx wrangler secret put NUXT_RESEND_API_KEY
+  "vars": {
+    "NUXT_PUBLIC_SITE_URL": "https://profile-frontend.ikuosaito1989.workers.dev",
+    "NUXT_PUBLIC_META_IMAGE": "https://profile-frontend.ikuosaito1989.workers.dev/profile_main.png",
+    "NUXT_PUBLIC_TITLE": "斉藤育男のプロフィール",
+    "NUXT_PUBLIC_DESCRIPTION": "斉藤育男のプロフィールです。現在、フリーランスで活動中です。こちらを見ていただき、お手伝いさせていただけそうな企業様、是非問合せフォームからご連絡お願いします。",
+    "NUXT_MAIL_SUPPORT": "info@noreply.ol-car.com",
+    "NUXT_MAIL_SUPPORT_NAME": "olcar サポートチーム",
+    "NUXT_MAIL_ADMIN": "ikuosaito1989@gmail.com"
+  }
+}
