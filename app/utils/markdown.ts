@@ -18,5 +18,22 @@ const marked = new Marked({
   }
 })
 
+/**
+ * meta description / og:description 用に Markdown を素のテキストへ落とす。
+ * mermaid などのコードブロックは説明文として不適切なため丸ごと除去する。
+ */
+export const toPlainText = (markdown: string, maxLength = 120): string => {
+  const text = markdown
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/<[^>]+>/g, '')
+    .replace(/[#>*_`|-]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+  return text.length > maxLength ? `${text.slice(0, maxLength)}…` : text
+}
+
 export const renderMarkdown = (content: string): string =>
   marked.parse(content, { async: false })
