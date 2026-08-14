@@ -29,10 +29,12 @@ export const portfolios: Portfolio[] = [
   },
   {
     id: 7,
-    name: 'LAHYL（ライル）（サービス終了）',
+    name: 'LAHYL（ライル）（サ終）',
     thumbnailUrl: '/lahyl.png',
     description: lahyl,
-    portfolioUrl: 'https://lahyl.me/',
+    // サービス終了済みのため Internet Archive のスナップショットを指す
+    portfolioUrl:
+      'https://web.archive.org/web/20251113012228/https://lahyl.me/',
     skills: []
   },
   {
@@ -53,10 +55,12 @@ export const portfolios: Portfolio[] = [
   },
   {
     id: 1,
-    name: 'みんなの洋楽ランキング（サービス終了）',
+    name: 'みんなの洋楽ランキング（サ終）',
     thumbnailUrl: '/mygkrnk.jpg',
     description: mygkrnk,
-    portfolioUrl: 'https://mygkrnk.com',
+    // サービス終了済みのため Internet Archive のスナップショットを指す
+    portfolioUrl:
+      'https://web.archive.org/web/20200507235913/https://mygkrnk.com/',
     skills: [
       'C#',
       '.NET Core3.1',
@@ -72,16 +76,13 @@ export const portfolios: Portfolio[] = [
     name: 'プロフィールサイト',
     thumbnailUrl: '/profile_main.png',
     description: profile,
-    portfolioUrl: 'https://festive-yonath-a04e1e.netlify.com/',
+    portfolioUrl: 'https://profile-frontend.ikuosaito1989.workers.dev/',
     skills: [
-      'NuxtJS',
+      'Nuxt',
       'Vue',
-      'Jest',
-      '.NET Core',
-      'Docker',
-      'Netlify',
-      'Heroku',
-      'SendGrid'
+      'TypeScript',
+      'Cloudflare Workers',
+      'Resend'
     ]
   },
   {
@@ -89,12 +90,14 @@ export const portfolios: Portfolio[] = [
     name: 'ITunEsTooL',
     thumbnailUrl: '/ITunEsTooL.jpg',
     description: itunestool,
-    portfolioUrl: 'https://freesoft-100.com/review/itunestool.html',
+    // 配布終了済みのため Internet Archive のスナップショットを指す
+    portfolioUrl:
+      'https://web.archive.org/web/20171116192556/http://itunestool.html.xdomain.jp/',
     skills: ['C#', 'Windows Forms']
   },
   {
     id: 4,
-    name: 'Feed bank',
+    name: 'Feed bank（サ終）',
     thumbnailUrl: '/feedbank.png',
     description: feedbank,
     portfolioUrl: 'https://feedbank.herokuapp.com',
