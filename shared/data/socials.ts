@@ -12,16 +12,6 @@ export const socials: Social[] = [
     }
   },
   {
-    id: 1,
-    name: 'Twitter',
-    url: 'https://twitter.com/mygkrnk',
-    fontawesome: {
-      name: 'twitter',
-      prefix: 'fab',
-      iconName: 'fa-twitter'
-    }
-  },
-  {
     id: 3,
     name: 'Qiita',
     url: 'https://qiita.com/ikuosaito1989/',
@@ -29,6 +19,18 @@ export const socials: Social[] = [
       name: 'Qiita',
       prefix: 'fab',
       iconName: 'fa-quora'
+    }
+  },
+  {
+    id: 6,
+    name: 'Zenn',
+    url: 'https://zenn.dev/ikuosaito1989',
+    fontawesome: {
+      name: 'Zenn',
+      // Font Awesome 5 に Zenn のブランドアイコンはないため、
+      // ロゴに近い開いた本のアイコンで代用する
+      prefix: 'fas',
+      iconName: 'fa-book-open'
     }
   }
 ]

@@ -54,7 +54,8 @@
 
 <script setup lang="ts">
 import { findPortfolio } from '~~/shared/data/portfolios'
-import { renderMarkdown } from '~/utils/markdown'
+import { renderMarkdown, toPlainText } from '~/utils/markdown'
+import { toAbsoluteUrl } from '~/utils/url'
 
 const route = useRoute()
 const descriptionRef = useTemplateRef<HTMLElement>('descriptionRef')
@@ -70,6 +71,38 @@ if (!selectedPortfolio.value) {
 const descriptionHtml = computed(() =>
   renderMarkdown(selectedPortfolio.value?.description ?? '')
 )
+
+// 作品ごとの OGP。app.vue の既定値を上書きする。
+const config = useRuntimeConfig()
+const { title: siteTitle, siteUrl } = config.public
+
+const pageTitle = computed(
+  () => `${selectedPortfolio.value?.name ?? ''} | ${siteTitle}`
+)
+const pageDescription = computed(() =>
+  toPlainText(selectedPortfolio.value?.description ?? '')
+)
+const pageImage = computed(() =>
+  toAbsoluteUrl(siteUrl, selectedPortfolio.value?.thumbnailUrl ?? '')
+)
+
+useSeoMeta({
+  title: pageTitle,
+  description: pageDescription,
+  ogTitle: pageTitle,
+  ogDescription: pageDescription,
+  ogType: 'article',
+  ogImage: pageImage,
+  ogImageAlt: () => selectedPortfolio.value?.name,
+  // サムネイルはサイズがまちまちなので、app.vue の 1200x630 指定を打ち消す
+  ogImageType: null,
+  ogImageWidth: null,
+  ogImageHeight: null,
+  twitterTitle: pageTitle,
+  twitterDescription: pageDescription,
+  twitterImage: pageImage,
+  twitterImageAlt: () => selectedPortfolio.value?.name
+})
 
 // mermaid はブラウザの DOM を必要とするため、クライアント側でのみ描画する。
 // import.meta.client のガードにより、サーバー(Workers)バンドルからは除外される。
