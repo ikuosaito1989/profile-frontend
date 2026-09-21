@@ -17,8 +17,8 @@
   "vars": {
     "NUXT_PUBLIC_SITE_URL": "https://profile-frontend.ikuosaito1989.workers.dev",
     "NUXT_PUBLIC_META_IMAGE": "/ogp.png",
-    "NUXT_PUBLIC_TITLE": "斉藤育男のプロフィール",
-    "NUXT_PUBLIC_DESCRIPTION": "斉藤育男のプロフィールです。現在、フリーランスで活動中です。こちらを見ていただき、お手伝いさせていただけそうな企業様、是非問合せフォームからご連絡お願いします。",
+    "NUXT_PUBLIC_TITLE": "斉藤育男（ikuosaito1989）のプロフィール",
+    "NUXT_PUBLIC_DESCRIPTION": "ikuosaito1989としてGitHub・Qiita・Zennで活動する、斉藤育男（Ikuo Saito）のプロフィール、経歴、スキル、ポートフォリオを紹介します。",
     "NUXT_MAIL_SUPPORT": "info@noreply.ol-car.com",
     "NUXT_MAIL_SUPPORT_NAME": "olcar サポートチーム",
     "NUXT_MAIL_ADMIN": "ikuosaito1989@gmail.com"

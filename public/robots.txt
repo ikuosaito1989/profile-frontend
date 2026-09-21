@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://profile-frontend.ikuosaito1989.workers.dev/sitemap.xml

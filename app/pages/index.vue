@@ -4,12 +4,17 @@
     <header class="masthead bg-primary text-white text-center">
       <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image -->
-        <img class="masthead-avatar mb-5" src="~/assets/img/profile.png" alt="" />
+        <img
+          class="masthead-avatar mb-5"
+          src="~/assets/img/profile.png"
+          alt="斉藤育男（ikuosaito1989）のプロフィール画像"
+        />
 
         <!-- Masthead Heading -->
         <h1 class="masthead-heading mb-0">
-          Ikuo Saito
+          斉藤育男
         </h1>
+        <p class="profile-handle mb-0">ikuosaito1989 / Ikuo Saito</p>
 
         <!-- Icon Divider -->
         <div class="divider-custom divider-light">
@@ -26,6 +31,23 @@
         </p>
       </div>
     </header>
+
+    <section id="profile" class="page-section profile-summary">
+      <div class="container text-center">
+        <h2 class="page-section-heading text-secondary">斉藤育男とは</h2>
+        <p class="lead mb-4">
+          斉藤育男は、Web上で「ikuosaito1989」の名前を使用しているフルスタックエンジニアです。<br />
+          GitHub、Qiita、Zennでのアカウント名はいずれもikuosaito1989です。
+        </p>
+        <ul class="profile-links mb-0" aria-label="ikuosaito1989の外部プロフィール">
+          <li v-for="social in socials" :key="social.id">
+            <a :href="social.url" target="_blank" rel="me noopener noreferrer">
+              {{ social.name }}: ikuosaito1989
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="page-section portfolio">
@@ -77,7 +99,7 @@
 
         <Loading :model-value="skills">
           <p class="lead">
-            はじめまして、こんにちは。東京近郊でWEBエンジニアをやっています。<br />
+            はじめまして、斉藤育男（ikuosaito1989）です。東京近郊でWEBエンジニアをやっています。<br />
             WEBサービスを作ることが好きなのでフロントエンド、サーバー問わずやっています。
           </p>
           <div style="justify-content: center;" class="row">
@@ -216,6 +238,50 @@ import { skills } from '~~/shared/data/skills'
 import { socials } from '~~/shared/data/socials'
 import { resumes } from '~~/shared/data/resumes'
 
+const config = useRuntimeConfig()
+const { siteUrl } = config.public
+
+const personStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${siteUrl}/#profile-page`,
+  url: siteUrl,
+  mainEntity: {
+    '@type': 'Person',
+    '@id': `${siteUrl}/#person`,
+    name: '斉藤育男',
+    alternateName: ['ikuosaito1989', 'Ikuo Saito'],
+    identifier: 'ikuosaito1989',
+    description:
+      'Web上でikuosaito1989として活動し、Webサービスを開発するフルスタックエンジニア',
+    url: siteUrl,
+    image: toAbsoluteUrl(siteUrl, '/profile_main.png'),
+    jobTitle: 'フルスタックエンジニア',
+    sameAs: socials.map((social) => social.url)
+  }
+}
+
+useSeoMeta({
+  title: '斉藤育男（ikuosaito1989）のプロフィール',
+  description:
+    'ikuosaito1989としてGitHub・Qiita・Zennで活動する、斉藤育男（Ikuo Saito）のプロフィール、経歴、スキル、ポートフォリオを紹介します。',
+  ogTitle: '斉藤育男（ikuosaito1989）のプロフィール',
+  ogDescription:
+    'ikuosaito1989として活動する斉藤育男（Ikuo Saito）の経歴、スキル、ポートフォリオを紹介します。',
+  twitterTitle: '斉藤育男（ikuosaito1989）のプロフィール',
+  twitterDescription:
+    'ikuosaito1989として活動する斉藤育男（Ikuo Saito）の経歴、スキル、ポートフォリオを紹介します。'
+})
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(personStructuredData)
+    }
+  ]
+})
+
 const sendMail = async (value: {
   name: string
   email: string
@@ -251,5 +317,21 @@ const sendMail = async (value: {
 .skill-description {
   padding: 0px 20px;
   text-align: center;
+}
+.profile-handle {
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+}
+.profile-summary {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+  padding: 0;
+  list-style: none;
 }
 </style>
