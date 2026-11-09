@@ -8,8 +8,17 @@ import profile from '../../content/profile.md?raw'
 import itunestool from '../../content/itunestool.md?raw'
 import feedbank from '../../content/feedbank.md?raw'
 import notFollow from '../../content/not-follow.md?raw'
+import shiningScorpion from '../../content/shining-scorpion.md?raw'
 
 export const portfolios: Portfolio[] = [
+  {
+    id: 9,
+    name: 'Shining Scorpion',
+    thumbnailUrl: '/ogp.png',
+    description: shiningScorpion,
+    portfolioUrl: 'https://preview-shiningscorpion.ikuosaito1989.workers.dev',
+    skills: ['Cloudflare Workers']
+  },
   {
     id: 8,
     name: 'neglegere（ネグレゲレ）',
