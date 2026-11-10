@@ -81,14 +81,74 @@
             はじめまして、斉藤育男（ikuosaito1989）です。東京近郊でWEBエンジニアをやっています。<br />
             WEBサービスを作ることが好きなのでフロントエンド、サーバー問わずやっています。
           </p>
-          <div style="justify-content: center" class="row">
-            <Skill
-              v-for="(skill, index) in skills"
-              :key="index"
-              :name="skill.name"
-              :star="skill.star"
-            />
+          <div class="skill-categories">
+            <section
+              v-for="category in skillCategories"
+              :key="category"
+              class="skill-category"
+            >
+              <h3>{{ category }}</h3>
+              <div class="skill-grid">
+                <Skill
+                  v-for="skill in skillsByCategory[category]"
+                  :key="skill.id"
+                  :name="skill.name"
+                  :star="skill.star"
+                  :evidence="skill.evidence"
+                  :repositories="skill.repositories"
+                />
+              </div>
+            </section>
           </div>
+          <aside class="skill-evaluation-note">
+            <h3>AIによるスキル評価</h3>
+            <p>
+              GitHub の Public / Private
+              リポジトリで確認できたソースコード、技術構成、テスト、インフラ設定などをもとに、OpenAI
+              GPT-6 が技術スキルを5段階で評価しました。
+            </p>
+            <ul>
+              <li>評価モデル：OpenAI GPT-6</li>
+              <li>
+                評価対象：アクセス可能な GitHub Public / Private
+                リポジトリのうち、実際に参照できた範囲
+              </li>
+              <li>評価方法：コード・設計・テスト・運用構成の分析</li>
+              <li>評価日：2026年11月10日</li>
+              <li>
+                ★1〜★5は GitHub
+                で確認できる実績に基づく推定で、職務能力を保証せず、実務経験のすべてを反映するものではありません。
+              </li>
+            </ul>
+            <details>
+              <summary>5段階評価の基準</summary>
+              <ol>
+                <li>使用経験が限定的で、習熟度を判断する材料が少ない</li>
+                <li>小規模な実装・検証・学習の経験がある</li>
+                <li>実際のプロジェクトで利用し、基本的な実装ができる</li>
+                <li>
+                  複数の実践的な開発経験があり、自立した設計・実装を確認できる
+                </li>
+                <li>
+                  高度な設計・実装・運用経験と深い理解をコードから確認できる
+                </li>
+              </ol>
+              「評価保留」は、今回確認できた証拠では星評価を決められない技術です。
+            </details>
+            <p>
+              参照した公開リポジトリ：
+              <a
+                href="https://github.com/ikuosaito1989"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub の公開リポジトリ一覧</a
+              >
+            </p>
+            <p>
+              今回、非公開リポジトリは一覧・ブランチ情報と一部の
+              README、依存関係、設定・ソースを接続経由で確認しました。全ファイル・全ブランチの網羅的な監査ではありません。確認できなかったものやブランチは最終評価報告に記載しています。非公開リポジトリの名前やソース内容は公開していません。
+            </p>
+          </aside>
         </Loading>
       </div>
     </section>
@@ -207,9 +267,16 @@
 
 <script setup lang="ts">
 import { portfolios } from '~~/shared/data/portfolios'
-import { skills } from '~~/shared/data/skills'
+import { skills, skillCategories } from '~~/shared/data/skills'
 import { socials } from '~~/shared/data/socials'
 import { resumes } from '~~/shared/data/resumes'
+
+const skillsByCategory = Object.fromEntries(
+  skillCategories.map((category) => [
+    category,
+    skills.filter((skill) => skill.category === category),
+  ]),
+)
 
 const config = useRuntimeConfig()
 const { siteUrl } = config.public
@@ -282,10 +349,31 @@ const sendMail = async (value: {
 </script>
 
 <style scoped>
-.skill-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.skill-categories {
+  display: grid;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.skill-category h3,
+.skill-evaluation-note h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+}
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 0.75rem;
+}
+.skill-evaluation-note {
+  padding: 1rem;
+  border: 1px solid rgb(255 255 255 / 35%);
+  border-radius: 0.5rem;
+  background: rgb(0 0 0 / 8%);
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+.skill-evaluation-note ul {
+  padding-left: 1.25rem;
 }
 .skill-description {
   padding: 0px 20px;

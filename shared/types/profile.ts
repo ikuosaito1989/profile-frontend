@@ -10,7 +10,10 @@ export interface Portfolio {
 export interface Skill {
   id: number
   name: string
-  star: number
+  category: string
+  star: number | null
+  evidence: string
+  repositories: Array<{ name: string; url: string }>
 }
 
 export interface Fontawesome {
