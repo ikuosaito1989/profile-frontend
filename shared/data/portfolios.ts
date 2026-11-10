@@ -14,7 +14,7 @@ export const portfolios: Portfolio[] = [
   {
     id: 9,
     name: 'Shining Scorpion',
-    thumbnailUrl: '/ogp.png',
+    thumbnailUrl: '/miniyonku-ogp.png',
     description: shiningScorpion,
     portfolioUrl: 'https://preview-shiningscorpion.ikuosaito1989.workers.dev',
     skills: ['Cloudflare Workers']
