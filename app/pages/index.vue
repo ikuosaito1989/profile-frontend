@@ -94,7 +94,6 @@
                   :key="skill.id"
                   :name="skill.name"
                   :star="skill.star"
-                  :evidence="skill.evidence"
                   :repositories="skill.repositories"
                 />
               </div>
@@ -319,15 +318,10 @@ const sendMail = async (value: {
   gap: 0.75rem;
 }
 .skill-evaluation-note {
-  padding: 1rem;
-  border: 1px solid rgb(255 255 255 / 35%);
-  border-radius: 0.5rem;
-  background: rgb(0 0 0 / 8%);
-  font-size: 0.9rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  opacity: 0.9;
   overflow-wrap: anywhere;
-}
-.skill-evaluation-note ul {
-  padding-left: 1.25rem;
 }
 .skill-description {
   padding: 0px 20px;

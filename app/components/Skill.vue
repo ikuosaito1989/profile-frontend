@@ -8,7 +8,6 @@
         <span v-else class="pending">評価保留</span>
       </div>
     </div>
-    <p class="skill-evidence">{{ evidence }}</p>
     <div v-if="repositories.length" class="skill-repositories">
       <a
         v-for="repository in repositories"
@@ -71,22 +70,15 @@ const ratingLabel = computed(() =>
 }
 .skill-box {
   min-width: 0;
-  padding: 0.8rem;
-  border: 1px solid rgb(255 255 255 / 25%);
-  border-radius: 0.5rem;
-  background: rgb(0 0 0 / 8%);
+  margin: 10px 20px;
+  width: 140px;
 }
 .skill-name {
-  min-height: 2.5rem;
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 500;
+  min-height: 0;
+  margin-right: 13px;
+  font-size: 1.25rem;
+  font-weight: 300;
   overflow-wrap: anywhere;
-}
-.skill-evidence {
-  margin: 0.25rem 0 0.5rem;
-  font-size: 0.8rem;
-  line-height: 1.4;
 }
 .skill-repositories {
   display: flex;
