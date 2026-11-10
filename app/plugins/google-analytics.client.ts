@@ -18,11 +18,20 @@ export default defineNuxtPlugin(() => {
   document.head.appendChild(script)
 
   // Nuxt client-side route changes do not trigger a new document load.
-  router.afterEach((to) => {
+  const sendPageView = (path: string) => {
     window.gtag('event', 'page_view', {
       page_title: document.title,
-      page_location: window.location.origin + to.fullPath,
-      page_path: to.fullPath
+      page_location: window.location.origin + path,
+      page_path: path
     })
+  }
+
+  // The config call handles normal document loads. This explicit first view
+  // also covers Nuxt hydration timing reliably; duplicate events are avoided
+  // by disabling config's automatic page_view.
+  window.gtag('config', measurementId, { send_page_view: false })
+  router.isReady().then(() => sendPageView(router.currentRoute.value.fullPath))
+  router.afterEach((to, from) => {
+    if (to.fullPath !== from.fullPath) sendPageView(to.fullPath)
   })
 })
