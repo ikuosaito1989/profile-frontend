@@ -314,10 +314,20 @@ const sendMail = async (value: {
   font-size: 1.2rem;
 }
 .skill-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-items: center;
+  gap: 0.75rem 0.5rem;
+}
+@media (min-width: 768px) {
+  .skill-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1200px) {
+  .skill-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 .skill-evaluation-note {
   margin-top: 1rem;
