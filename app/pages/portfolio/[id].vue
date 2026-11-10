@@ -22,7 +22,7 @@
               class="image rounded mb-5"
               alt=""
             />
-            <div class="text-left mb-5">
+            <div class="portfolio-description text-left mb-5">
               <div ref="descriptionRef" v-html="descriptionHtml" />
 
               <div class="mb-3">
@@ -122,6 +122,35 @@ onMounted(async () => {
 .image {
   max-width: 100%;
   height: auto;
+}
+
+/* Keep long Markdown URLs and tag rows within narrow mobile viewports. */
+.portfolio-description {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-description :deep(img),
+.portfolio-description :deep(svg) {
+  max-width: 100%;
+  height: auto;
+}
+
+.portfolio-description :deep(pre) {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.portfolio-description :deep(table) {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.portfolio-description :deep(a),
+.portfolio-description :deep(p),
+.portfolio-description :deep(li) {
+  overflow-wrap: anywhere;
 }
 
 /* v-html で描画されるため :deep() で指定する */
