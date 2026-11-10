@@ -132,7 +132,7 @@ export const skills: Skill[] = [
     star: 3,
     evidence:
       'TypeScript のサーバー側スクリプトと Node.js ベースのフロントエンド運用を確認。',
-    repositories: [repo('postassist'), repo('voice-clone-task')],
+    repositories: [],
   },
   {
     id: 14,
@@ -291,7 +291,7 @@ export const skills: Skill[] = [
     star: 3,
     evidence:
       'Responses API を呼ぶ小さな TypeScript CLI と実サービスの説明を確認。API統合の基本実装を評価。',
-    repositories: [repo('postassist')],
+    repositories: [],
   },
   {
     id: 31,
