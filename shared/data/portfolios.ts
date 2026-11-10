@@ -13,7 +13,7 @@ import shiningScorpion from '../../content/shining-scorpion.md?raw'
 export const portfolios: Portfolio[] = [
   {
     id: 9,
-    name: 'Shining Scorpion',
+    name: 'チビ四駆 -セイラン-',
     thumbnailUrl: '/miniyonku-ogp.png',
     description: shiningScorpion,
     portfolioUrl: 'https://preview-shiningscorpion.ikuosaito1989.workers.dev',
