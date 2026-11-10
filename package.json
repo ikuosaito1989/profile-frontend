@@ -21,6 +21,7 @@
     "marked": "^16.4.0",
     "mermaid": "^11.16.1",
     "nuxt": "^4.5.2",
+    "nuxt-gtag": "^5.0.0",
     "sweetalert": "^2.1.2",
     "vee-validate": "^4.15.1",
     "vue": "^3.5.24",

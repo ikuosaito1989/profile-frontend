@@ -25,6 +25,11 @@ const rawMarkdown = () => ({
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  modules: ['nuxt-gtag'],
+  gtag: {
+    id: 'G-F1LHCEWMS7'
+  },
+
   compatibilityDate: '2025-08-13',
   devtools: { enabled: true },
 
