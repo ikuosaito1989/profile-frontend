@@ -91,6 +91,7 @@
               <div class="skill-grid">
                 <Skill
                   v-for="skill in skillsByCategory[category]"
+                  v-show="skill.star !== null"
                   :key="skill.id"
                   :name="skill.name"
                   :star="skill.star"
@@ -313,9 +314,10 @@ const sendMail = async (value: {
   font-size: 1.2rem;
 }
 .skill-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  gap: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
 }
 .skill-evaluation-note {
   margin-top: 1rem;
